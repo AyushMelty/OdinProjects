@@ -3,17 +3,7 @@ function clearGrid() {
     par.innerHTML = "";
     return;
 }
-
-document.querySelector("#size").addEventListener("click", function (){
-    clearGrid();
-    let size = prompt("Enter a grid size (1-100):");
-    if (size > 100) {
-        alert("Size too large! Please enter a number between 1 and 100.");
-        return;
-    } else if (size < 1) {
-        alert("Size too small! Please enter a number between 1 and 100.");
-        return;
-    }
+function createGrid(size){
     let par=document.querySelector(".container");
     for(let i=0;i<size;i++){
         let temp=document.createElement("div");
@@ -26,6 +16,19 @@ document.querySelector("#size").addEventListener("click", function (){
         par.appendChild(temp);
     }
     return;
+}
+createGrid(16);
+document.querySelector("#size").addEventListener("click", function (){
+    clearGrid();
+    let size = prompt("Enter a grid size (1-100):");
+    if (size > 100) {
+        alert("Size too large! Please enter a number between 1 and 100.");
+        return;
+    } else if (size < 1) {
+        alert("Size too small! Please enter a number between 1 and 100.");
+        return;
+    }
+    createGrid(size);
 });
 
 document.querySelector("#black").addEventListener("click", function (){
